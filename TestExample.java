@@ -45,18 +45,18 @@ public class TestExample {
 	
 	public static void getCountfor10Sec(WebDriver driver,String inpString) {
 		WebElement element = driver.findElement(By.xpath("//div[normalize-space(text())='"+inpString+"']/following-sibling::div"));
+		printingData(element, inpString);
+	}
+	
+	public static void getCountfor10Sec(WebElement element) {
+		printingData(element, "Main Population Count");
+	}
+	public static void printingData(WebElement element, String inpString) {
 		long startTime = System.currentTimeMillis();
 		while((System.currentTimeMillis()-startTime)<10000) {
 			resString = element.getText().replaceAll(",", "");
 			System.out.println(inpString + ":" + Long.parseLong(resString));
-		}
 	}
-	
-	public static void getCountfor10Sec(WebElement element) {
-		long startTime = System.currentTimeMillis();
-		while((System.currentTimeMillis()-startTime)<10000) {
-			resString = element.getText().replaceAll(",", "");
-			System.out.println("Current World Population : " + Long.parseLong(resString));
-		}
-	}
+}
+
 }
